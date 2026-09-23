@@ -1,113 +1,736 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#09090b"><meta name="color-scheme" content="dark">
-<title>Настройка Incy</title>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#09090b;color:#f5f5f7;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{width:min(920px,calc(100% - 32px));margin:auto;padding:52px 0 80px}.hero{text-align:center;padding:36px 16px 48px}.logo{width:94px;height:94px;margin:auto;border-radius:24px;background:linear-gradient(145deg,#063d20,#020b06);border:2px solid #35d26f;display:grid;place-items:center;box-shadow:0 0 32px #22c55e22;color:#35d26f;font-size:28px;font-weight:800;letter-spacing:-1px}.hero h1{font-size:clamp(36px,7vw,58px);letter-spacing:-2px;margin:26px 0 10px}.hero p{margin:0;color:#a1a1aa;font-size:18px}.steps{display:grid;gap:22px}.step{background:#151518;border:1px solid #2b2b31;border-radius:28px;padding:30px;box-shadow:0 18px 50px #0005}.tag{display:inline-flex;align-items:center;gap:9px;color:#8ab4ff;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.08em}.num{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#23345d;color:#8ab4ff}.step h2{font-size:29px;letter-spacing:-.6px;margin:15px 0 10px}.step p{color:#b1b1b8;font-size:17px;line-height:1.55;margin:0 0 22px}.shot{display:block;width:min(100%,420px);max-height:680px;object-fit:contain;margin:22px auto 0;border-radius:22px;border:1px solid #2b2b31;background:#08080a}.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}.pair .shot{width:100%;margin-top:0}.route{display:block;text-align:center;background:#f4f4f5;color:#111114;padding:18px 22px;border-radius:16px;text-decoration:none;font-size:18px;font-weight:750;margin:24px 0 10px}.route:active{transform:scale(.99)}.check{margin-top:18px;padding:16px 18px;background:#0d2116;border:1px solid #235f3a;border-radius:16px;color:#7ee2a5;font-size:15px;line-height:1.5}.finish{text-align:center;margin-top:28px;padding:34px;border-radius:28px;background:#101b14;border:1px solid #245d37}.finish b{font-size:25px;color:#62df91}.finish p{margin:8px 0 0;color:#a8b5ac}.small{font-size:14px!important;color:#777780!important}@media(max-width:650px){.wrap{width:min(100% - 22px,920px);padding-top:20px}.hero{padding:25px 10px 35px}.step{padding:22px 18px;border-radius:23px}.step h2{font-size:25px}.pair{grid-template-columns:1fr}.shot{max-height:none}.logo{width:82px;height:82px;border-radius:21px}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .update-card {
-      margin-top: 24px;
+  <title>Настройка Incy</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
     }
+
+    :root {
+      --bg: #08090b;
+      --card: #151518;
+      --card-border: #292a30;
+      --text: #f5f5f7;
+      --muted: #9a9aa2;
+      --blue: #6698ff;
+      --blue-dark: #223f76;
+      --green: #55e68a;
+      --green-bg: #0c2115;
+      --green-border: #1b6b3b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(50, 75, 130, 0.08),
+          transparent 30%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      line-height: 1.55;
+    }
+
+    .container {
+      width: min(100% - 32px, 980px);
+      margin: 0 auto;
+      padding: 72px 0 60px;
+    }
+
+    /* HEADER */
+
+    header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .app-icon {
+      width: 82px;
+      height: 82px;
+      border-radius: 22px;
+      object-fit: cover;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 6vw, 54px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* STEPS */
+
+    .step {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 26px;
+      padding: 28px;
+      margin-bottom: 22px;
+
+      box-shadow:
+        0 16px 45px rgba(0, 0, 0, 0.18);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 14px;
+
+      color: #8fb4ff;
+
+      font-size: 13px;
+      font-weight: 750;
+
+      letter-spacing: 0.08em;
+    }
+
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 28px;
+      height: 28px;
+
+      border-radius: 8px;
+
+      background: var(--blue-dark);
+      color: #9dc0ff;
+
+      font-size: 14px;
+      font-weight: 750;
+
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+
+      font-size: clamp(25px, 4vw, 32px);
+      line-height: 1.2;
+
+      letter-spacing: -0.025em;
+    }
+
+    p {
+      margin: 0;
+      color: #b0b0b8;
+      font-size: 16px;
+    }
+
+    code {
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+      color: #d4d4da;
+    }
+
+    /* SCREENSHOTS */
+
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .shots.one {
+      grid-template-columns: minmax(0, 440px);
+      justify-content: center;
+    }
+
+    .shot {
+      width: 100%;
+      display: block;
+
+      border-radius: 20px;
+
+      border: 1px solid #303137;
+
+      background: #08090b;
+    }
+
+    /* NOTES */
+
+    .note {
+      margin-top: 18px;
+
+      padding: 14px 16px;
+
+      border-radius: 14px;
+
+      background: #0b2517;
+      border: 1px solid #17683a;
+
+      color: #70e79c;
+
+      font-size: 14px;
+    }
+
+    /* MAIN ROUTING BUTTON */
+
+    .route-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+
+      margin-top: 20px;
+      padding: 16px 18px;
+
+      border-radius: 14px;
+
+      background: #f2f2f4;
+      color: #111114;
+
+      text-decoration: none;
+
+      font-size: 16px;
+      font-weight: 750;
+
+      transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
+    }
+
+    .route-button:hover {
+      opacity: 0.92;
+    }
+
+    .route-button:active {
+      transform: scale(0.99);
+    }
+
+    .hint {
+      margin-top: 10px;
+
+      color: #777780;
+
+      font-size: 13px;
+    }
+
+    /* DONE */
+
+    .done {
+      margin: 28px 0;
+
+      padding: 30px;
+
+      text-align: center;
+
+      border-radius: 26px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(25, 95, 51, 0.17),
+          rgba(10, 37, 22, 0.85)
+        );
+
+      border: 1px solid var(--green-border);
+    }
+
+    .done-title {
+      margin-bottom: 4px;
+
+      color: var(--green);
+
+      font-size: 25px;
+      font-weight: 750;
+    }
+
+    .done p {
+      color: #b6c1ba;
+    }
+
+    .done .small {
+      margin-top: 8px;
+
+      color: #747b77;
+
+      font-size: 13px;
+    }
+
+    /* UPDATE LINKS */
 
     .download-links {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 18px;
+
+      gap: 12px;
+
+      margin-top: 22px;
     }
 
     .store-link {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 50px;
-      padding: 12px 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
+
+      gap: 10px;
+
+      min-height: 58px;
+
+      padding: 13px 16px;
+
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.055);
+
       color: #f5f5f7;
+
       text-decoration: none;
-      font-weight: 650;
-      text-align: center;
-      transition: background .15s ease, transform .15s ease;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
     }
 
     .store-link:hover {
-      background: rgba(255,255,255,.10);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.18);
     }
 
     .store-link:active {
-      transform: scale(.98);
+      transform: scale(0.98);
+    }
+
+    .store-icon {
+      width: 23px;
+      height: 23px;
+
+      flex: 0 0 23px;
+
+      display: block;
+
+      color: currentColor;
     }
 
     .small-note {
-      margin-top: 14px;
-      opacity: .62;
+      margin-top: 15px;
+
+      color: #777780;
+
       font-size: 13px;
-      line-height: 1.45;
     }
 
-    @media (max-width: 640px) {
+    /* FOOTER */
+
+    footer {
+      margin-top: 36px;
+
+      text-align: center;
+
+      color: #55555d;
+
+      font-size: 12px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      .container {
+        width: min(100% - 20px, 980px);
+        padding-top: 38px;
+      }
+
+      .app-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 19px;
+      }
+
+      header {
+        margin-bottom: 30px;
+      }
+
+      .step {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .shots {
+        grid-template-columns: 1fr;
+      }
+
+      .shots.one {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .shot {
+        max-width: 430px;
+        margin: 0 auto;
+      }
+
       .download-links {
         grid-template-columns: 1fr;
       }
+
+      .store-link {
+        min-height: 56px;
+      }
+
+      .done {
+        padding: 24px 18px;
+      }
     }
-
-</style>
+  </style>
 </head>
-<body><main class="wrap">
-<section class="hero"><div class="logo">INCY</div><h1>Настройка Incy</h1><p>VPN + маршрутизация · займёт около 2 минут</p></section>
-<div class="steps">
-<section class="step"><div class="tag"><span class="num">1</span>Добавьте VPN</div><h2>Скопируйте персональную ссылку</h2><p>Скопируйте полученную ссылку <b>vless://…</b>. В Incy на вкладке «Подключение» вставьте её в поле добавления сервера.</p><div class="pair"><img class="shot" src="assets/01-add.png" alt="Поле добавления сервера в Incy"><img class="shot" src="assets/02-paste.png" alt="VLESS ссылка вставлена в Incy"></div><div class="check">После вставки нажмите <b>«Добавить сервер»</b>. Новый сервер появится в разделе «Мои серверы».</div></section>
-<section class="step"><div class="tag"><span class="num">2</span>Маршрутизация</div><h2>Добавьте GrimbirdVPN Whitelist</h2><p>Нажмите кнопку ниже. Устройство предложит открыть Incy — подтвердите открытие и импорт профиля.</p><a class="route" href="incy://autorouting/onadd/https://raw.githubusercontent.com/GrimbirdUsers/ru-routing-dat/main/INCY/WHITELIST.JSON">Добавить маршрутизацию в Incy</a><p class="small">Если браузер покажет системное окно «Открыть эту страницу в приложении INCY?» — нажмите «Открыть».</p><img class="shot" src="assets/03-added.jpg" alt="Сервер успешно добавлен в Incy"></section>
-<section class="step"><div class="tag"><span class="num">3</span>Проверка</div><h2>Убедитесь, что маршруты включены</h2><p>Откройте <b>Настройки → Туннель</b>. Переключатель «Профили маршрутизации» должен быть включён. Затем откройте профили и проверьте активный профиль.</p><div class="pair"><img class="shot" src="assets/04-tunnel.png" alt="Профили маршрутизации включены"><img class="shot" src="assets/05-routing.png" alt="GrimbirdVPN Whitelist выбран активным"></div><div class="check">Должно быть: <b>«Профили маршрутизации» — включено</b>, а активный профиль — <b>GrimbirdVPN Whitelist</b>.</div></section>
-<section class="step"><div class="tag"><span class="num">4</span>Подключение</div><h2>Подключитесь к VPN</h2><p>Вернитесь на вкладку «Подключение». Убедитесь, что выбран ваш сервер, и нажмите большую кнопку питания.</p><img class="shot" src="assets/06-home.jpg" alt="Главный экран Incy с добавленным сервером"></section>
-</div>
-<section class="finish"><b>✓ Готово</b><p>VPN и маршрутизация настроены.</p><p class="small" style="margin-top:14px">Интерфейс может незначительно отличаться в зависимости от устройства и версии Incy.</p></section>
 
 
-<section class="step update-card">
+<body>
 
-  <div class="eyebrow">
+  <main class="container">
 
-    <span class="num">5</span>
+    <!-- HEADER -->
 
-    <span>ОБНОВЛЕНИЯ</span>
+    <header>
 
-  </div>
+      <img
+        src="assets/incy.png"
+        alt="Incy"
+        class="app-icon"
+      >
 
-  <h2>Не забывайте обновлять Incy</h2>
+      <h1>Настройка Incy</h1>
 
-  <p>
+      <div class="subtitle">
+        VPN + маршрутизация · займёт около 2 минут
+      </div>
 
-    Используйте актуальную версию приложения — это важно для стабильной работы,
+    </header>
 
-    совместимости и доступа к новым функциям.
 
-  </p>
-    <h2>Не забывайте обновлять Incy</h2>
-    <p>
-      Регулярно устанавливайте обновления Incy. В новых версиях исправляются ошибки,
-      обновляется ядро и улучшается совместимость подключения и маршрутизации.
-    </p>
+    <!-- STEP 1 -->
 
-    <div class="download-links">
-      <a class="store-link" href="https://apps.apple.com/us/app/incy/id6756943388" target="_blank" rel="noopener">
-        App Store
+    <section class="step">
+
+      <div class="eyebrow">
+        <span class="num">1</span>
+        <span>ДОБАВЬТЕ VPN</span>
+      </div>
+
+      <h2>Скопируйте персональную ссылку</h2>
+
+      <p>
+        Скопируйте полученную ссылку
+        <code>vless://...</code>.
+        В Incy на вкладке «Подключение» вставьте её
+        в поле добавления сервера.
+      </p>
+
+      <div class="shots">
+
+        <img
+          class="shot"
+          src="assets/01-add.png"
+          alt="Поле добавления сервера в Incy"
+        >
+
+        <img
+          class="shot"
+          src="assets/02-paste.png"
+          alt="VLESS ссылка вставлена в Incy"
+        >
+
+      </div>
+
+      <div class="note">
+        После вставки нажмите <strong>«Добавить сервер»</strong>.
+        Новый сервер появится в разделе «Мои серверы».
+      </div>
+
+    </section>
+
+
+    <!-- STEP 2 -->
+
+    <section class="step">
+
+      <div class="eyebrow">
+        <span class="num">2</span>
+        <span>МАРШРУТИЗАЦИЯ</span>
+      </div>
+
+      <h2>Добавьте GrimbirdVPN Whitelist</h2>
+
+      <p>
+        Нажмите кнопку ниже. Устройство предложит открыть Incy —
+        подтвердите открытие и импорт профиля.
+      </p>
+
+      <a
+        class="route-button"
+        href="incy://autorouting/onadd/https://raw.githubusercontent.com/GrimbirdUsers/ru-routing-dat/main/INCY/WHITELIST.JSON"
+      >
+        Добавить маршрутизацию в Incy
       </a>
-      <a class="store-link" href="https://play.google.com/store/apps/details?id=llc.itdev.incy" target="_blank" rel="noopener">
-        Google Play
-      </a>
-      <a class="store-link" href="https://github.com/INCY-DEV/incy-platforms" target="_blank" rel="noopener">
-        GitHub / ПК
-      </a>
-    </div>
 
-    <p class="small-note">
-      Для Windows, Linux и других вариантов установки используйте официальный GitHub INCY.
-    </p>
-  </div>
-</section>
+      <div class="hint">
+        Если браузер покажет системное окно
+        «Открыть эту страницу в приложении INCY?» —
+        нажмите «Открыть».
+      </div>
 
-</main></body></html>
+      <div class="shots one">
+
+        <img
+          class="shot"
+          src="assets/03-added.jpg"
+          alt="Сервер успешно добавлен в Incy"
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- STEP 3 -->
+
+    <section class="step">
+
+      <div class="eyebrow">
+        <span class="num">3</span>
+        <span>ПРОВЕРКА</span>
+      </div>
+
+      <h2>Убедитесь, что маршрутизация включена</h2>
+
+      <p>
+        Откройте
+        <strong>Настройки → Туннель</strong>.
+        Переключатель «Профили маршрутизации»
+        должен быть включён.
+      </p>
+
+      <div class="shots">
+
+        <img
+          class="shot"
+          src="assets/04-tunnel.png"
+          alt="Настройки туннеля Incy"
+        >
+
+        <img
+          class="shot"
+          src="assets/05-routing.png"
+          alt="Профили маршрутизации Incy"
+        >
+
+      </div>
+
+      <div class="note">
+        В разделе «Активный профиль» должен быть выбран
+        <strong>GrimbirdVPN Whitelist</strong>.
+      </div>
+
+    </section>
+
+
+    <!-- STEP 4 -->
+
+    <section class="step">
+
+      <div class="eyebrow">
+        <span class="num">4</span>
+        <span>ПОДКЛЮЧЕНИЕ</span>
+      </div>
+
+      <h2>Подключитесь к VPN</h2>
+
+      <p>
+        Вернитесь на вкладку «Подключение».
+        Убедитесь, что выбран ваш сервер,
+        и нажмите большую кнопку питания.
+      </p>
+
+      <div class="shots one">
+
+        <img
+          class="shot"
+          src="assets/06-home.jpg"
+          alt="Главный экран Incy"
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- DONE -->
+
+    <section class="done">
+
+      <div class="done-title">
+        ✓ Готово
+      </div>
+
+      <p>
+        VPN и маршрутизация настроены.
+      </p>
+
+      <p class="small">
+        Интерфейс может незначительно отличаться
+        в зависимости от устройства и версии Incy.
+      </p>
+
+    </section>
+
+
+    <!-- STEP 5 -->
+
+    <section class="step">
+
+      <div class="eyebrow">
+        <span class="num">5</span>
+        <span>ОБНОВЛЕНИЯ</span>
+      </div>
+
+      <h2>Не забывайте обновлять Incy</h2>
+
+      <p>
+        Используйте актуальную версию приложения —
+        это важно для стабильной работы, совместимости
+        и доступа к новым функциям.
+      </p>
+
+
+      <div class="download-links">
+
+        <!-- APP STORE -->
+
+        <a
+          class="store-link"
+          href="https://apps.apple.com/us/app/incy/id6756943388"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <svg
+            class="store-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.79 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.1zM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25z"
+            />
+          </svg>
+
+          <span>App Store</span>
+
+        </a>
+
+
+        <!-- GOOGLE PLAY -->
+
+        <a
+          class="store-link"
+          href="https://play.google.com/store/apps/details?id=llc.itdev.incy"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <svg
+            class="store-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M3.18 2.27a1.5 1.5 0 0 0-.68 1.27v16.92a1.5 1.5 0 0 0 .68 1.27L13.9 12 3.18 2.27zm12.1 8.48-2.72-2.47L5.1 1.5l10.18 9.25zm.82.75 3.17 2.88c.97.88.97 2.36 0 3.24l-3.17 2.88-3.55-3.22 3.55-3.23zm-.82 1.75L5.1 22.5l7.46-6.78 2.72-2.47z"
+            />
+          </svg>
+
+          <span>Google Play</span>
+
+        </a>
+
+
+        <!-- GITHUB -->
+
+        <a
+          class="store-link"
+          href="https://github.com/INCY-DEV/incy-platforms"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <svg
+            class="store-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.74-1.55-2.57-.29-5.27-1.29-5.27-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A11 11 0 0 1 12 6.12c.98 0 1.96.13 2.88.39 2.19-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.71 5.39-5.29 5.68.42.36.79 1.06.79 2.14v3.26c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7z"
+            />
+          </svg>
+
+          <span>GitHub</span>
+
+        </a>
+
+      </div>
+
+
+      <p class="small-note">
+        Регулярно проверяйте наличие новой версии Incy.
+        Для вариантов установки, доступных через GitHub,
+        используйте официальный репозиторий проекта.
+      </p>
+
+    </section>
+
+
+    <footer>
+      Incy setup guide
+    </footer>
+
+  </main>
+
+</body>
+</html>
