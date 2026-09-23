@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#09090b"><meta name="color-scheme" content="dark">
+<title>Настройка Incy</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#09090b;color:#f5f5f7;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{width:min(920px,calc(100% - 32px));margin:auto;padding:52px 0 80px}.hero{text-align:center;padding:36px 16px 48px}.logo{width:94px;height:94px;margin:auto;border-radius:24px;background:linear-gradient(145deg,#063d20,#020b06);border:2px solid #35d26f;display:grid;place-items:center;box-shadow:0 0 32px #22c55e22;color:#35d26f;font-size:28px;font-weight:800;letter-spacing:-1px}.hero h1{font-size:clamp(36px,7vw,58px);letter-spacing:-2px;margin:26px 0 10px}.hero p{margin:0;color:#a1a1aa;font-size:18px}.steps{display:grid;gap:22px}.step{background:#151518;border:1px solid #2b2b31;border-radius:28px;padding:30px;box-shadow:0 18px 50px #0005}.tag{display:inline-flex;align-items:center;gap:9px;color:#8ab4ff;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.08em}.num{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#23345d;color:#8ab4ff}.step h2{font-size:29px;letter-spacing:-.6px;margin:15px 0 10px}.step p{color:#b1b1b8;font-size:17px;line-height:1.55;margin:0 0 22px}.shot{display:block;width:min(100%,420px);max-height:680px;object-fit:contain;margin:22px auto 0;border-radius:22px;border:1px solid #2b2b31;background:#08080a}.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}.pair .shot{width:100%;margin-top:0}.route{display:block;text-align:center;background:#f4f4f5;color:#111114;padding:18px 22px;border-radius:16px;text-decoration:none;font-size:18px;font-weight:750;margin:24px 0 10px}.route:active{transform:scale(.99)}.check{margin-top:18px;padding:16px 18px;background:#0d2116;border:1px solid #235f3a;border-radius:16px;color:#7ee2a5;font-size:15px;line-height:1.5}.finish{text-align:center;margin-top:28px;padding:34px;border-radius:28px;background:#101b14;border:1px solid #245d37}.finish b{font-size:25px;color:#62df91}.finish p{margin:8px 0 0;color:#a8b5ac}.small{font-size:14px!important;color:#777780!important}@media(max-width:650px){.wrap{width:min(100% - 22px,920px);padding-top:20px}.hero{padding:25px 10px 35px}.step{padding:22px 18px;border-radius:23px}.step h2{font-size:25px}.pair{grid-template-columns:1fr}.shot{max-height:none}.logo{width:82px;height:82px;border-radius:21px}}
+
+    .update-card {
+      margin-top: 24px;
+    }
+
+    .download-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .store-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      color: #f5f5f7;
+      text-decoration: none;
+      font-weight: 650;
+      text-align: center;
+      transition: background .15s ease, transform .15s ease;
+    }
+
+    .store-link:hover {
+      background: rgba(255,255,255,.10);
+    }
+
+    .store-link:active {
+      transform: scale(.98);
+    }
+
+    .small-note {
+      margin-top: 14px;
+      opacity: .62;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 640px) {
+      .download-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+</style>
+</head>
+<body><main class="wrap">
+<section class="hero"><div class="logo">INCY</div><h1>Настройка Incy</h1><p>VPN + маршрутизация · займёт около 2 минут</p></section>
+<div class="steps">
+<section class="step"><div class="tag"><span class="num">1</span>Добавьте VPN</div><h2>Скопируйте персональную ссылку</h2><p>Скопируйте полученную ссылку <b>vless://…</b>. В Incy на вкладке «Подключение» вставьте её в поле добавления сервера.</p><div class="pair"><img class="shot" src="assets/01-add.png" alt="Поле добавления сервера в Incy"><img class="shot" src="assets/02-paste.png" alt="VLESS ссылка вставлена в Incy"></div><div class="check">После вставки нажмите <b>«Добавить сервер»</b>. Новый сервер появится в разделе «Мои серверы».</div></section>
+<section class="step"><div class="tag"><span class="num">2</span>Маршрутизация</div><h2>Добавьте GrimbirdVPN Whitelist</h2><p>Нажмите кнопку ниже. Устройство предложит открыть Incy — подтвердите открытие и импорт профиля.</p><a class="route" href="incy://autorouting/onadd/https://raw.githubusercontent.com/GrimbirdUsers/ru-routing-dat/main/INCY/WHITELIST.JSON">Добавить маршрутизацию в Incy</a><p class="small">Если браузер покажет системное окно «Открыть эту страницу в приложении INCY?» — нажмите «Открыть».</p><img class="shot" src="assets/03-added.jpg" alt="Сервер успешно добавлен в Incy"></section>
+<section class="step"><div class="tag"><span class="num">3</span>Проверка</div><h2>Убедитесь, что маршруты включены</h2><p>Откройте <b>Настройки → Туннель</b>. Переключатель «Профили маршрутизации» должен быть включён. Затем откройте профили и проверьте активный профиль.</p><div class="pair"><img class="shot" src="assets/04-tunnel.png" alt="Профили маршрутизации включены"><img class="shot" src="assets/05-routing.png" alt="GrimbirdVPN Whitelist выбран активным"></div><div class="check">Должно быть: <b>«Профили маршрутизации» — включено</b>, а активный профиль — <b>GrimbirdVPN Whitelist</b>.</div></section>
+<section class="step"><div class="tag"><span class="num">4</span>Подключение</div><h2>Подключитесь к VPN</h2><p>Вернитесь на вкладку «Подключение». Убедитесь, что выбран ваш сервер, и нажмите большую кнопку питания.</p><img class="shot" src="assets/06-home.jpg" alt="Главный экран Incy с добавленным сервером"></section>
+</div>
+<section class="finish"><b>✓ Готово</b><p>VPN и маршрутизация настроены.</p><p class="small" style="margin-top:14px">Интерфейс может незначительно отличаться в зависимости от устройства и версии Incy.</p></section>
+
+<section class="step update-card">
+  <div class="step-number">5</div>
+  <div class="step-content">
+    <h2>Не забывайте обновлять Incy</h2>
+    <p>
+      Регулярно устанавливайте обновления Incy. В новых версиях исправляются ошибки,
+      обновляется ядро и улучшается совместимость подключения и маршрутизации.
+    </p>
+
+    <div class="download-links">
+      <a class="store-link" href="https://apps.apple.com/us/app/incy/id6756943388" target="_blank" rel="noopener">
+        App Store
+      </a>
+      <a class="store-link" href="https://play.google.com/store/apps/details?id=llc.itdev.incy" target="_blank" rel="noopener">
+        Google Play
+      </a>
+      <a class="store-link" href="https://github.com/INCY-DEV/incy-platforms" target="_blank" rel="noopener">
+        GitHub / ПК
+      </a>
+    </div>
+
+    <p class="small-note">
+      Для Windows, Linux и других вариантов установки используйте официальный GitHub INCY.
+    </p>
+  </div>
+</section>
+
+</main></body></html>
