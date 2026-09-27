@@ -1,0 +1,62 @@
+{
+  "name": "GrimbirdVPN Whitelist",
+  "id": "0899ABA1-ADCC-53BA-AE86-2CE42F58D8EC",
+  "domainStrategy": "IPIfNonMatch",
+  "domainMatcher": "hybrid",
+  "balancers": [],
+  "rules": [
+    {
+      "id": "83FCDAAF-EA9A-5E69-91B4-DBE5CDDCE1B1",
+      "__name__": "Grimbird whitelist domains",
+      "type": "field",
+      "domain": [
+        "geosite:private",
+        "geosite:category-ru-whitelist",
+        "geosite:ru-whitelist-extended",
+        "geosite:ru-retail-extra",
+        "geosite:ru-marking",
+        "geosite:ru-banks",
+        "geosite:ru-payments",
+        "geosite:ru-cdn",
+        "geosite:ru-analytics",
+        "geosite:ru-medical",
+        "geosite:ru-transport",
+        "geosite:ru-finance",
+        "geosite:wildberries",
+        "geosite:ozon",
+        "geosite:category-gov-ru"
+      ],
+      "outboundTag": "direct"
+    },
+    {
+      "id": "2EC54F92-8021-5D53-99A6-D2929AAD571A",
+      "__name__": "Grimbird whitelist IPs",
+      "type": "field",
+      "ip": [
+        "geoip:private",
+        "geoip:ru",
+        "geoip:ru-analytics",
+        "geoip:ru-banks",
+        "geoip:ru-cdn",
+        "geoip:ru-mts",
+        "geoip:ru-ozon",
+        "geoip:ru-payments",
+        "geoip:ru-vk",
+        "geoip:ru-wildberries",
+        "geoip:ru-yandex",
+        "geoip:ru-avito"
+      ],
+      "outboundTag": "direct"
+    },
+    {
+      "id": "CA59C470-D3E4-59BD-A99D-4027713DFE3A",
+      "__name__": "Other IPs via VPN",
+      "type": "field",
+      "ip": [
+        "0.0.0.0/0",
+        "::/0"
+      ],
+      "outboundTag": "proxy"
+    }
+  ]
+}
