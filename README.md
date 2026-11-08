@@ -15,9 +15,9 @@
 
 ## Ссылки и актуальность
 
-Статус доступности указан на **27.09.2026**. Ограничение v2RayTun относится к **российскому App Store**, не ко всем регионам iOS.
+Статус доступности обновлён по официальной публикации Incy от **05.11.2026**. Для пользователей iPhone из РФ временно используется [TestFlight](https://testflight.apple.com/join/dFw66h3a); глобальная версия остаётся в App Store. Ограничение v2RayTun относится к **российскому App Store**, не ко всем регионам iOS.
 
-- Incy: [официальный репозиторий и ссылки](https://github.com/INCY-DEV/incy-platforms), [App Store](https://apps.apple.com/ru/app/incy/id6756943388), [Google Play](https://play.google.com/store/apps/details?id=llc.itdev.incy).
+- Incy: [официальный репозиторий и ссылки](https://github.com/INCY-DEV/incy-platforms), [TestFlight для пользователей из РФ](https://testflight.apple.com/join/dFw66h3a), [глобальный App Store](https://apps.apple.com/ru/app/incy/id6756943388), [Google Play](https://play.google.com/store/apps/details?id=llc.itdev.incy).
 - Имена установщиков Incy сверены с API последнего GitHub-релиза; ссылки используют `releases/latest/download`. Настольные сборки обозначены разработчиком как pre-alpha.
 - v2RayTun: [репозиторий разработчика](https://github.com/LXST-CODE/v2RayTun), [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android), [релизы Android](https://github.com/LXST-CODE/v2RayTun/releases?q=android). Резервная ссылка на универсальный APK закреплена на версии **5.25.82**; обновлять её в `app.js` при смене версии.
 - Логотип Incy и его скриншоты сохранены из исходного репозитория. Логотип v2RayTun взят из его карточки Google Play и сохранён локально.
