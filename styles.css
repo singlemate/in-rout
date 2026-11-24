@@ -11,3 +11,4 @@
 .copy-field textarea:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .copy-field .hint:empty{display:none}
 .copy-field .button{font-size:12px;min-height:42px}
+.incy-route{display:flex;width:min(100%,320px);margin-bottom:8px}.incy-route+.hint{margin-top:8px}

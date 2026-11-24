@@ -85,7 +85,7 @@ const guides = {
     },
     {
       title: 'Добавьте маршрутизацию',
-      body: '<p>Нажмите кнопку ниже, подтвердите открытие Incy и импорт профиля <strong>GrimbirdVPN Whitelist</strong>.</p><a class="button primary-route" href="incy://autorouting/onadd/https://raw.githubusercontent.com/GrimbirdUsers/ru-routing-dat/main/INCY/WHITELIST.JSON">Добавить маршрутизацию в Incy ↗</a><p class="hint">После импорта вернитесь на эту страницу, чтобы продолжить.</p>',
+      body: '<p>Нажмите кнопку ниже, подтвердите открытие Incy и импорт профиля <strong>GrimbirdVPN Whitelist</strong>.</p><a class="button primary-route incy-route" href="incy://autorouting/onadd/https://raw.githubusercontent.com/GrimbirdUsers/ru-routing-dat/main/INCY/WHITELIST.JSON">Добавить маршрутизацию</a><p class="hint">После импорта вернитесь на эту страницу, чтобы продолжить.</p>',
       next: 'Профиль добавлен',
       extra: '<details class="help"><summary>Кнопка не открывает Incy</summary><p>Откройте эту страницу в обычном браузере — Safari, Chrome или другом, а не внутри мессенджера. Убедитесь, что Incy установлен и обновлён.</p></details>'
     },
