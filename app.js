@@ -4,8 +4,8 @@
 const app = document.querySelector('#app');
 const progress = document.querySelector('#progress');
 const back = document.querySelector('#back');
-const APP_STORE = 'https://apps.apple.com/ru/app/incy/id6756943388';
-const INCY_TESTFLIGHT = 'https://testflight.apple.com/join/dFw66h3a';
+const APP_STORE = 'https://apps.apple.com/us/app/incy/id6756943388';
+const APPLE_REGION_HELP = 'https://support.apple.com/ru-ru/118283';
 const INCY_RELEASE = 'https://github.com/INCY-DEV/incy-platforms/releases/latest';
 const INCY_FILE = INCY_RELEASE + '/download/';
 const grimbird = window.GRIMBIRD_ROUTING;
@@ -15,10 +15,7 @@ const clients = {
 };
 const systems = { ios: 'iPhone / iPad', android: 'Android', mac: 'macOS', windows: 'Windows', linux: 'Linux' };
 const incyDownloads = {
-  ios: [
-    [INCY_TESTFLIGHT, 'Установить через TestFlight', 'Для пользователей из России · временный способ'],
-    [APP_STORE, 'Открыть App Store', 'Для Apple ID других регионов']
-  ],
+  ios: [[APP_STORE, 'Открыть глобальный App Store', 'Требуется поддерживаемый регион Аккаунта Apple']],
   android: [
     ['https://play.google.com/store/apps/details?id=llc.itdev.incy', 'Открыть Google Play', 'Установить из магазина'],
     [INCY_FILE + 'Incy.apk', 'Скачать APK', 'Если Google Play недоступен']
@@ -38,6 +35,20 @@ const incyDownloads = {
     [INCY_FILE + 'incy-linux-x64.pkg.tar.zst', 'Arch · x64', 'Arch Linux'],
     [INCY_FILE + 'incy-linux-arm64.deb', 'DEB · ARM64', 'Ubuntu, Debian на ARM'],
     [INCY_FILE + 'incy-linux-arm64.rpm', 'RPM · ARM64', 'Fedora на ARM']
+  ]
+};
+const v2raytunDownloads = {
+  android: [
+    ['https://play.google.com/store/apps/details?id=com.v2raytun.android', 'Открыть Google Play', 'v2RayTun для Android'],
+    ['https://v2raytun.lxst-code.workers.dev/android', 'Скачать актуальный APK', 'Постоянная ссылка разработчика · универсальная сборка'],
+    ['https://github.com/LXST-CODE/v2RayTun/releases?q=android', 'Все версии для Android', 'Релизы разработчика на GitHub']
+  ],
+  windows: [
+    ['https://v2raytun.lxst-code.workers.dev/windows', 'Скачать для Windows', 'Постоянная ссылка разработчика · Windows 10+ · x64'],
+    ['https://github.com/LXST-CODE/v2RayTun/releases?q=windows', 'Все версии для Windows', 'Релизы разработчика на GitHub']
+  ],
+  mac: [
+    ['https://apps.apple.com/us/app/v2raytun/id6476628951', 'Открыть глобальный App Store', 'Доступность зависит от региона Аккаунта Apple']
   ]
 };
 
@@ -143,32 +154,29 @@ function render() {
     const installed = page === 'choose-installed';
     stage = 2;
     content = heading('Ваше приложение', installed ? 'Какое приложение у вас установлено?' : 'Какой клиент хотите установить?', installed ? 'Выберите свой клиент — сразу перейдём к настройке.' : 'Оба клиента подходят для подключения. Выберите удобный для себя.');
-    content += `<div class="client-grid">${Object.entries(clients).map(([id, data]) => `<a class="client-card" href="#${installed ? 'setup/' + id + '/1' : 'device/' + id}"><img src="${data.icon}" alt="" width="76" height="76"><strong>${data.name}</strong><span>${id === 'incy' ? 'iOS, Android и компьютеры' : installed ? 'Настроить установленное приложение' : 'Доступен на Android'}</span><span class="card-cta">${installed ? 'Перейти к настройке' : 'Выбрать клиент'} <span aria-hidden="true">→</span></span></a>`).join('')}</div>`;
-    if (!installed) content += '<aside class="note availability"><strong>Доступность на 05.11.2026</strong><p>Incy на iPhone в России временно устанавливается через TestFlight; для Apple ID других регионов доступен App Store. На Android Incy доступен в Google Play. v2RayTun можно установить на Android; в российском App Store он недоступен. Если приложение уже установлено на iPhone, можно сразу перейти к настройке.</p></aside>';
+    content += `<div class="client-grid">${Object.entries(clients).map(([id, data]) => `<a class="client-card" href="#${installed ? 'setup/' + id + '/1' : 'device/' + id}"><img src="${data.icon}" alt="" width="76" height="76"><strong>${data.name}</strong><span>${id === 'incy' ? 'iOS, Android и компьютеры' : installed ? 'Настроить установленное приложение' : 'Android, Windows и macOS'}</span><span class="card-cta">${installed ? 'Перейти к настройке' : 'Выбрать клиент'} <span aria-hidden="true">→</span></span></a>`).join('')}</div>`;
+    if (!installed) content += '<aside class="note availability"><strong>Доступность на 25.11.2026</strong><p>Временная TestFlight-ссылка Incy для России закрыта. На iPhone Incy и v2RayTun устанавливаются из глобального App Store; с российским регионом Аккаунта Apple приложения могут быть недоступны. Incy также доступен на Android, Windows, macOS и Linux; v2RayTun — на Android, Windows и macOS.</p></aside>';
   } else if (page === 'device' && clients[client]) {
     stage = 3;
     backTo = 'choose-new';
     content = clientMark(client) + heading('Установка', 'На каком устройстве?', 'Покажем ссылки для вашей системы. После установки вернитесь сюда.');
-    const options = client === 'incy' ? Object.entries(systems) : [['android', 'Android'], ['ios', 'iPhone / iPad']];
+    const options = client === 'incy' ? Object.entries(systems) : [['android', 'Android'], ['windows', 'Windows'], ['mac', 'macOS'], ['ios', 'iPhone / iPad']];
     content += `<div class="device-grid">${options.map(([id, name]) => `<a class="device" href="#install/${client}/${id}"><strong>${name}</strong><span aria-hidden="true">→</span></a>`).join('')}</div>`;
-    if (client === 'v2raytun') content += '<p class="hint">На компьютере? <a href="#device/incy">Установить Incy для macOS, Windows или Linux</a>.</p>';
-  } else if (page === 'install' && clients[client] && systems[value] && (client === 'incy' || ['android', 'ios'].includes(value))) {
+    if (client === 'v2raytun') content += '<p class="hint">Версия v2RayTun для Linux пока только запланирована разработчиком. Для Linux можно <a href="#install/incy/linux">установить Incy</a>.</p>';
+  } else if (page === 'install' && clients[client] && systems[value] && (client === 'incy' || ['android', 'ios', 'windows', 'mac'].includes(value))) {
     stage = 3;
     backTo = `device/${client}`;
     content = clientMark(client) + heading(systems[value], `Установите ${clients[client].name}`, 'Откройте подходящую ссылку ниже, установите приложение и вернитесь на эту страницу.');
     if (client === 'v2raytun' && value === 'ios') {
-      content = clientMark(client) + heading('iPhone / iPad', 'В российском App Store приложение недоступно', 'По состоянию на 05.11.2026 для новой установки на iPhone рекомендуем Incy через TestFlight.');
+      content = clientMark(client) + heading('iPhone / iPad', 'В российском App Store приложение недоступно', 'Для новой установки рекомендуем Incy из глобального App Store. Может потребоваться сменить регион Аккаунта Apple.');
       content += `<div class="actions">${action('install/incy/ios', 'Установить Incy')}${action('setup/v2raytun/1', 'v2RayTun уже установлен', true)}</div>`;
     } else {
-      const downloads = client === 'incy' ? incyDownloads[value] : [
-        ['https://play.google.com/store/apps/details?id=com.v2raytun.android', 'Открыть Google Play', 'v2RayTun для Android'],
-        ['https://github.com/LXST-CODE/v2RayTun/releases/download/android-v5.25.82/v2RayTun-android-universal-v5.25.82.apk', 'Скачать APK', 'Универсальная сборка Android · 5.25.82'],
-        ['https://github.com/LXST-CODE/v2RayTun/releases?q=android', 'Все версии для Android', 'Релизы разработчика на GitHub']
-      ];
+      const downloads = client === 'incy' ? incyDownloads[value] : v2raytunDownloads[value];
       content += `<div class="download-list">${downloads.map(item => link(...item)).join('')}</div>`;
-      if (client === 'incy' && value === 'ios') content += '<div class="note"><strong>Если у вас российский Apple ID</strong><p>Сначала установите приложение TestFlight от Apple, если его ещё нет. Затем откройте первую ссылку и примите приглашение на тестирование Incy. Количество мест в TestFlight может быть ограничено.</p><p>Ссылка App Store предназначена для аккаунтов других регионов.</p></div>';
+      if (client === 'incy' && value === 'ios') content += `<div class="note"><strong>Если у вас российский регион Аккаунта Apple</strong><p>Временная TestFlight-ссылка больше не работает. Для установки из глобального App Store потребуется поддерживаемый регион Аккаунта Apple.</p><p><a href="${APPLE_REGION_HELP}" target="_blank" rel="noopener noreferrer">Официальная инструкция Apple по смене страны или региона</a></p></div>`;
       if (client === 'incy' && ['mac', 'windows', 'linux'].includes(value)) content += '<p class="hint">Версии с GitHub находятся на стадии pre-alpha: интерфейс может отличаться от мобильной инструкции. Выбирайте файл для своей системы и процессора.</p>';
       if (value === 'android') content += '<p class="hint">При установке APK Android может запросить разрешение на установку из этого источника. После установки его можно отключить.</p>';
+      if (client === 'v2raytun' && value === 'mac') content += '<p class="hint">С российским регионом Аккаунта Apple приложение может быть недоступно. В таком случае используйте <a href="#install/incy/mac">Incy для macOS с GitHub</a>.</p>';
       content += `<div class="confirmation"><h2>Удалось установить приложение?</h2><div class="actions">${action(`setup/${client}/1/${value}`, 'Да, перейти к настройке')}<button class="button secondary" type="button" id="install-help-button" aria-expanded="false" aria-controls="install-help">Нет, нужна помощь</button></div><div id="install-help" class="note" hidden><p>Проверьте свободное место и совместимость устройства на странице загрузки. Если магазин не открывается, попробуйте другую ссылку выше или откройте страницу в обычном браузере.</p><p><a href="#choose-new">Выбрать другой клиент</a></p></div></div>`;
     }
   } else if (page === 'setup' && clients[client] && /^\d+$/.test(value || '') && guides[client][Number(value) - 1]) {

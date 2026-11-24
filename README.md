@@ -15,11 +15,11 @@
 
 ## Ссылки и актуальность
 
-Статус доступности обновлён по официальной публикации Incy от **05.11.2026**. Для пользователей iPhone из РФ временно используется [TestFlight](https://testflight.apple.com/join/dFw66h3a); глобальная версия остаётся в App Store. Ограничение v2RayTun относится к **российскому App Store**, не ко всем регионам iOS.
+Статус доступности проверен **25.11.2026**. Временная TestFlight-ссылка Incy для РФ закрыта и удалена со страницы. Для iPhone используется глобальный App Store; при российском регионе Аккаунта Apple предлагается [официальная инструкция Apple по смене региона](https://support.apple.com/ru-ru/118283). Ограничение v2RayTun также относится к российскому App Store.
 
-- Incy: [официальный репозиторий и ссылки](https://github.com/INCY-DEV/incy-platforms), [TestFlight для пользователей из РФ](https://testflight.apple.com/join/dFw66h3a), [глобальный App Store](https://apps.apple.com/ru/app/incy/id6756943388), [Google Play](https://play.google.com/store/apps/details?id=llc.itdev.incy).
+- Incy: [официальный репозиторий и постоянные ссылки](https://github.com/INCY-DEV/incy-platforms), [глобальный App Store](https://apps.apple.com/us/app/incy/id6756943388), [Google Play](https://play.google.com/store/apps/details?id=llc.itdev.incy).
 - Имена установщиков Incy сверены с API последнего GitHub-релиза; ссылки используют `releases/latest/download`. Настольные сборки обозначены разработчиком как pre-alpha.
-- v2RayTun: [репозиторий разработчика](https://github.com/LXST-CODE/v2RayTun), [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android), [релизы Android](https://github.com/LXST-CODE/v2RayTun/releases?q=android). Резервная ссылка на универсальный APK закреплена на версии **5.25.82**; обновлять её в `app.js` при смене версии.
+- v2RayTun: [официальный репозиторий](https://github.com/LXST-CODE/v2RayTun), [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android), [App Store](https://apps.apple.com/us/app/v2raytun/id6476628951), [релизы](https://github.com/LXST-CODE/v2RayTun/releases). Android APK и Windows EXE используют постоянные ссылки разработчика и автоматически ведут на актуальные сборки. На странице доступны Android, Windows и macOS; Linux пока отмечен как запланированный согласно платформенной документации разработчика.
 - Логотип Incy и его скриншоты сохранены из исходного репозитория. Логотип v2RayTun взят из его карточки Google Play и сохранён локально.
 
 Профиль GrimbirdVPN Whitelist и ссылка импорта Incy сохранены из исходной инструкции. В v2RayTun добавлены установка баз Grimbird, импорт адаптированного профиля и выбор активного профиля перед подключением. Два скриншота iPhone предоставлены владельцем страницы: пустой список с кнопкой добавления и выбранный сервер до включения VPN.
